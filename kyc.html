@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISION.COM | KYC Verification</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">VISION.COM</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="trade.html">Trade</a>
+        <a href="kyc.html">KYC</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <section class="page-hero">
+      <h1>KYC Verification</h1>
+      <p>Start your identity verification to unlock trading access on Vision. All information is collected only for compliance and account activation.</p>
+    </section>
+
+    <section class="kyc-form-wrap">
+      <form id="kycForm" class="kyc-form">
+        <div class="form-step form-step-active" data-step="1">
+          <h2>Personal details</h2>
+          <label>Full name<input type="text" name="fullName" placeholder="Jane Doe" required /></label>
+          <label>Email address<input type="email" name="email" placeholder="jane@vision.com" required /></label>
+          <label>Date of birth<input type="date" name="birthDate" required /></label>
+          <button class="button button-primary" type="button" id="nextStep">Next step</button>
+        </div>
+
+        <div class="form-step" data-step="2">
+          <h2>Identity documents</h2>
+          <label>Country of residence<select name="country" required>
+            <option value="">Select country</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Australia</option>
+            <option>Other</option>
+          </select></label>
+          <label>Document type<select name="docType" required>
+            <option value="">Select document</option>
+            <option>Passport</option>
+            <option>National ID</option>
+            <option>Driver's license</option>
+          </select></label>
+          <label>Document number<input type="text" name="docNumber" placeholder="123456789" required /></label>
+          <label>Upload document image<input type="file" name="docUpload" accept="image/*,.pdf" required /></label>
+          <div class="form-actions">
+            <button class="button button-secondary" type="button" id="prevStep">Back</button>
+            <button class="button button-primary" type="submit">Submit verification</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="kycSuccess" class="kyc-success" hidden>
+        <h2>Verification submitted</h2>
+        <p>Thank you. Your information has been received. We will review your details and notify you when your account is ready for trading.</p>
+        <a class="button button-secondary" href="index.html">Back to home</a>
+      </div>
+    </section>
+
+    <section class="details">
+      <h2>What happens next</h2>
+      <ul>
+        <li>We verify your identity details against our compliance partner.</li>
+        <li>Once approved, your account is activated for trading.</li>
+        <li>All data is retained securely and only used for KYC verification.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>VISION.COM • Prepared for compliance-first onboarding.</p>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>

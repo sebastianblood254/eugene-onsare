@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISION.COM | Login</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">VISION.COM</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="trade.html">Trade</a>
+        <a href="broker.html">Broker</a>
+        <a href="kyc.html">KYC</a>
+        <a href="signup.html">Signup</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content auth-page">
+    <section class="page-hero">
+      <h1>Welcome back</h1>
+      <p>Login to your Vision trading account to continue to broker integration, KYC status, and market tools.</p>
+    </section>
+
+    <section class="auth-content">
+      <form id="loginForm" class="auth-form">
+        <h2>Login</h2>
+        <label>Email address<input type="email" name="email" placeholder="you@vision.com" required /></label>
+        <label>Password<input type="password" name="password" placeholder="Enter your password" required /></label>
+        <button class="button button-primary" type="submit">Login</button>
+      </form>
+
+      <div id="loginSuccess" class="status-card" hidden>
+        <h2>Success</h2>
+        <p>You are now logged in to Vision. Continue to the broker page for account access and market updates.</p>
+        <a class="button button-secondary" href="broker.html">Go to Broker</a>
+      </div>
+    </section>
+
+    <section class="details">
+      <h2>Need an account?</h2>
+      <p>If you do not have an account yet, signup to create your Vision trading profile and start verification.</p>
+      <a class="button button-secondary" href="signup.html">Create account</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>VISION.COM • Secure login prototype for the trading portal.</p>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "vision-com",
+  "version": "0.1.0",
+  "description": "Vision.com trading site prototype with login, signup, KYC and broker API integration sample.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

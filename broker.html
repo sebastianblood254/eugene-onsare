@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISION.COM | Broker Integration</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">VISION.COM</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="trade.html">Trade</a>
+        <a href="broker.html">Broker</a>
+        <a href="kyc.html">KYC</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <section class="page-hero">
+      <h1>Broker API integration</h1>
+      <p>This page shows a sample brokerage integration flow. In production, replace the mock endpoints with a real broker API such as Deriv.com.</p>
+    </section>
+
+    <section class="broker-panel">
+      <div class="broker-card">
+        <h2>Live broker demo</h2>
+        <p>Use the buttons below to simulate a broker session, fetch account details, and request a sample market quote from the backend.</p>
+        <div class="button-row">
+          <button id="connectBroker" class="button button-primary">Connect to broker</button>
+          <button id="fetchQuote" class="button button-secondary">Fetch market quote</button>
+          <button id="fetchAccount" class="button button-secondary">Fetch account</button>
+        </div>
+      </div>
+
+      <div id="brokerOutput" class="api-card">
+        <h3>Broker output</h3>
+        <pre id="brokerJson">No broker data fetched yet.</pre>
+      </div>
+    </section>
+
+    <section class="details">
+      <h2>How integration works</h2>
+      <ul>
+        <li>Login and user authentication happen before broker access.</li>
+        <li>KYC approval is required before trading through a broker API.</li>
+        <li>Broker endpoints should be proxied through a secure backend for credentials and session management.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>VISION.COM • Broker API integration sample for trading apps.</p>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>

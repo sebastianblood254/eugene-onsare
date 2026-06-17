@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VISION.COM | Signup</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">VISION.COM</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="trade.html">Trade</a>
+        <a href="broker.html">Broker</a>
+        <a href="kyc.html">KYC</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content auth-page">
+    <section class="page-hero">
+      <h1>Create your Vision account</h1>
+      <p>Signup for Vision to begin verification, manage broker connections, and access options trading tools.</p>
+    </section>
+
+    <section class="auth-content">
+      <form id="signupForm" class="auth-form">
+        <h2>Signup</h2>
+        <label>Full name<input type="text" name="fullName" placeholder="Jane Doe" required /></label>
+        <label>Email address<input type="email" name="email" placeholder="you@vision.com" required /></label>
+        <label>Password<input type="password" name="password" placeholder="Create a password" required /></label>
+        <button class="button button-primary" type="submit">Create account</button>
+      </form>
+
+      <div id="signupSuccess" class="status-card" hidden>
+        <h2>Account created</h2>
+        <p>Your account registration is complete. Proceed to KYC verification before accessing broker services.</p>
+        <a class="button button-secondary" href="kyc.html">Start KYC</a>
+      </div>
+    </section>
+
+    <section class="details">
+      <h2>Already have an account?</h2>
+      <p>Login to resume trading activity and broker API access. Your account is needed for secure trading flows.</p>
+      <a class="button button-secondary" href="login.html">Login</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>VISION.COM • Signup flow for the Vision trading portal.</p>
+    </div>
+  </footer>
+  <script src="assets/script.js"></script>
+</body>
+</html>
