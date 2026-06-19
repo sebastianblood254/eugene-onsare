@@ -19,7 +19,12 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
 
 // Ticker Updates - Simulate live price movements
 const tickerData = {
-  SI: { price: 5234.50, change: 2.45 },
+  VOL10: { price: 6432.10, change: 1.12 },
+  VOL25: { price: 5980.25, change: 0.95 },
+  VOL50: { price: 5234.50, change: 2.45 },
+  VOL75: { price: 4812.80, change: -0.28 },
+  VOL100: { price: 4304.15, change: 1.76 },
+  VOL200: { price: 3920.60, change: 0.32 },
   CFD: { price: 3821.75, change: 1.82 },
   STEP: { price: 2156.25, change: -0.95 }
 };
@@ -29,9 +34,9 @@ function updateTickers() {
     const ticker = tickerData[symbol];
     
     // Simulate random price movement
-    const randomChange = (Math.random() - 0.5) * 0.5;
+    const randomChange = (Math.random() - 0.5) * 0.7;
     ticker.price += randomChange;
-    ticker.change += randomChange * 0.1;
+    ticker.change += randomChange * 0.12;
     
     // Update display
     const tickerElement = document.querySelector(`[data-ticker="${symbol}"]`);
@@ -55,19 +60,26 @@ function updateMovingTicker() {
   const movingTicker = document.getElementById('moving-ticker');
   if (movingTicker) {
     const items = [
-      `SI: ${tickerData.SI.price.toFixed(2)}`,
+      `VOL10: ${tickerData.VOL10.price.toFixed(2)}`,
+      `VOL25: ${tickerData.VOL25.price.toFixed(2)}`,
+      `VOL50: ${tickerData.VOL50.price.toFixed(2)}`,
+      `VOL75: ${tickerData.VOL75.price.toFixed(2)}`,
+      `VOL100: ${tickerData.VOL100.price.toFixed(2)}`,
+      `VOL200: ${tickerData.VOL200.price.toFixed(2)}`,
       `CFD: ${tickerData.CFD.price.toFixed(2)}`,
       `STEP: ${tickerData.STEP.price.toFixed(2)}`
     ];
     
-    movingTicker.innerHTML = items.map(item => 
+    const tickerHtml = items.map(item => 
       `<span class="ticker-item">${item}</span>`
     ).join('');
+
+    movingTicker.innerHTML = tickerHtml + tickerHtml;
   }
 }
 
-// Update tickers every 2 seconds
-setInterval(updateTickers, 2000);
+// Update tickers every second
+setInterval(updateTickers, 1000);
 updateTickers(); // Initial update
 
 // Trade Execution
@@ -112,55 +124,82 @@ document.querySelectorAll('.trade-btn').forEach(btn => {
   });
 });
 
-// Trade Analyzer - Update digit percentages dynamically
-function updateDigitAnalyzer() {
-  document.querySelectorAll('.digit-card').forEach(card => {
-    const digit = card.dataset.digit;
-    
-    // Simulate percentage changes
-    const randomPercentage = (Math.random() - 0.5) * 10;
-    const percentageEl = card.querySelector('.digit-percentage');
-    
-    if (percentageEl) {
-      percentageEl.textContent = `${randomPercentage >= 0 ? '+' : ''}${randomPercentage.toFixed(1)}%`;
-      const percentageClass = randomPercentage >= 0 ? 'positive' : 'negative';
-      percentageEl.className = `digit-percentage ${percentageClass}`;
+// Trade Analyzer - Weighted digit cursor and active selection
+function getDigitInfos() {
+  return Array.from(document.querySelectorAll('.digit-circle')).map(circle => ({
+    element: circle,
+    digit: parseInt(circle.dataset.digit, 10),
+    percent: parseFloat(circle.dataset.percent) || 0
+  }));
+}
+
+function chooseWeightedDigit(digits) {
+  const totalWeight = digits.reduce((sum, digit) => sum + digit.percent, 0);
+  const threshold = Math.random() * totalWeight;
+  let accumulator = 0;
+
+  for (const item of digits) {
+    accumulator += item.percent;
+    if (threshold <= accumulator) {
+      return item;
     }
-    
-    // Simulate digit value changes
-    const randomDigit = Math.floor(Math.random() * 10);
-    const valueEl = card.querySelector('.digit-value');
-    if (valueEl) {
-      valueEl.textContent = randomDigit;
-    }
+  }
+
+  return digits[digits.length - 1] || null;
+}
+
+function setActiveDigit(item) {
+  if (!item) return;
+
+  document.querySelectorAll('.digit-circle').forEach(circle => circle.classList.remove('active'));
+  item.element.classList.add('active');
+
+  const activeDigit = document.getElementById('active-digit');
+  const activePercent = document.getElementById('active-percent');
+  if (activeDigit) activeDigit.textContent = item.digit;
+  if (activePercent) activePercent.textContent = `${item.percent.toFixed(1)}%`;
+
+  const cursor = document.getElementById('digit-cursor');
+  const row = document.getElementById('digit-circle-row');
+  if (cursor && row && item.element) {
+    const rowRect = row.getBoundingClientRect();
+    const circleRect = item.element.getBoundingClientRect();
+    const offset = circleRect.left - rowRect.left + (circleRect.width - cursor.offsetWidth) / 2;
+
+    cursor.style.width = `${Math.max(50, circleRect.width * 0.85)}px`;
+    cursor.style.transform = `translateX(${offset}px)`;
+  }
+}
+
+function animateDigitCursor() {
+  const digits = getDigitInfos();
+  if (!digits.length) return;
+
+  const selected = chooseWeightedDigit(digits);
+  setActiveDigit(selected);
+}
+
+function attachDigitClickHandlers() {
+  document.querySelectorAll('.digit-circle').forEach(circle => {
+    circle.addEventListener('click', function() {
+      const digit = parseInt(this.dataset.digit, 10);
+      const percent = parseFloat(this.dataset.percent) || 0;
+      setActiveDigit({ element: this, digit, percent });
+    });
   });
 }
 
-// Update analyzer every 3 seconds
-setInterval(updateDigitAnalyzer, 3000);
-
-// Digit Card Click - Show detailed analysis
-document.querySelectorAll('.digit-card').forEach(card => {
-  card.addEventListener('click', function() {
-    const digit = this.dataset.digit;
-    const percentage = this.querySelector('.digit-percentage').textContent;
-    const frequency = this.querySelector('.digit-frequency').textContent;
-    
-    console.log(`Digit ${digit} Analysis:`, { percentage, frequency });
-    alert(`
-Digit ${digit} Analysis:
-${percentage}
-${frequency}
-
-Recommendation: Monitor this digit for trading patterns.
-    `);
-  });
-});
+attachDigitClickHandlers();
+animateDigitCursor();
+setInterval(animateDigitCursor, 1000);
 
 // Form Validation
-document.getElementById('instrument-select').addEventListener('change', function() {
-  console.log('Instrument selected:', this.value);
-});
+const instrumentSelect = document.getElementById('instrument-select');
+if (instrumentSelect) {
+  instrumentSelect.addEventListener('change', function() {
+    console.log('Instrument selected:', this.value);
+  });}
+
 
 document.getElementById('range-min').addEventListener('input', function() {
   const maxInput = document.getElementById('range-max');

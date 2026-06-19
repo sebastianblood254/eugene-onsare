@@ -42,17 +42,97 @@
       <div class="instruments-grid">
         <div class="instrument-card">
           <div class="instrument-header">
-            <h3>Synthetic Indices</h3>
-            <span class="badge">Volatility: Medium</span>
+            <h3>Volatility 10</h3>
+            <span class="badge">Volatility: 10</span>
           </div>
-          <div class="ticker" data-ticker="SI">
-            <div class="ticker-name">Synthetic Index</div>
+          <div class="ticker" data-ticker="VOL10">
+            <div class="ticker-name">Volatility 10 Index</div>
+            <div class="ticker-value">6,432.10</div>
+            <div class="ticker-change positive">+1.12%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Low volatility synthetic market for measured exposure and steady trading.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL10">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Volatility 25</h3>
+            <span class="badge">Volatility: 25</span>
+          </div>
+          <div class="ticker" data-ticker="VOL25">
+            <div class="ticker-name">Volatility 25 Index</div>
+            <div class="ticker-value">5,980.25</div>
+            <div class="ticker-change positive">+0.95%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Balanced volatility index suitable for active traders seeking moderate swings.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL25">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Volatility 50</h3>
+            <span class="badge">Volatility: 50</span>
+          </div>
+          <div class="ticker" data-ticker="VOL50">
+            <div class="ticker-name">Volatility 50 Index</div>
             <div class="ticker-value">5,234.50</div>
             <div class="ticker-change positive">+2.45%</div>
           </div>
           <div class="instrument-details">
-            <p>AI-generated volatile indices with 24/7 trading available.</p>
-            <button class="button button-primary trade-btn" data-instrument="SI">Trade Now</button>
+            <p>Medium volatility synthetic market for traders looking for regular movement.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL50">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Volatility 75</h3>
+            <span class="badge">Volatility: 75</span>
+          </div>
+          <div class="ticker" data-ticker="VOL75">
+            <div class="ticker-name">Volatility 75 Index</div>
+            <div class="ticker-value">4,812.80</div>
+            <div class="ticker-change negative">-0.28%</div>
+          </div>
+          <div class="instrument-details">
+            <p>High volatility synthetic market for more dynamic moves and stronger trends.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL75">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Volatility 100</h3>
+            <span class="badge">Volatility: 100</span>
+          </div>
+          <div class="ticker" data-ticker="VOL100">
+            <div class="ticker-name">Volatility 100 Index</div>
+            <div class="ticker-value">4,304.15</div>
+            <div class="ticker-change positive">+1.76%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Higher volatility synthetic index for experienced traders chasing stronger returns.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL100">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Volatility 200</h3>
+            <span class="badge">Volatility: 200</span>
+          </div>
+          <div class="ticker" data-ticker="VOL200">
+            <div class="ticker-name">Volatility 200 Index</div>
+            <div class="ticker-value">3,920.60</div>
+            <div class="ticker-change positive">+0.32%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Extreme volatility synthetic market for agile traders and fast movement strategies.</p>
+            <button class="button button-primary trade-btn" data-instrument="VOL200">Trade Now</button>
           </div>
         </div>
 
@@ -97,7 +177,12 @@
         <div class="form-group">
           <label>Select Instrument</label>
           <select id="instrument-select">
-            <option value="SI">Synthetic Index</option>
+            <option value="VOL10">Volatility 10</option>
+            <option value="VOL25">Volatility 25</option>
+            <option value="VOL50">Volatility 50</option>
+            <option value="VOL75">Volatility 75</option>
+            <option value="VOL100">Volatility 100</option>
+            <option value="VOL200">Volatility 200</option>
             <option value="CFD">CFDs</option>
             <option value="STEP">Step Index</option>
           </select>
@@ -130,7 +215,12 @@
         <div class="ticker-display">
           <h4>Live Moving Ticker</h4>
           <div class="moving-ticker" id="moving-ticker">
-            <span class="ticker-item">SI: 5,234.50</span>
+            <span class="ticker-item">VOL10: 6,432.10</span>
+            <span class="ticker-item">VOL25: 5,980.25</span>
+            <span class="ticker-item">VOL50: 5,234.50</span>
+            <span class="ticker-item">VOL75: 4,812.80</span>
+            <span class="ticker-item">VOL100: 4,304.15</span>
+            <span class="ticker-item">VOL200: 3,920.60</span>
             <span class="ticker-item">CFD: 3,821.75</span>
             <span class="ticker-item">STEP: 2,156.25</span>
           </div>
@@ -145,69 +235,58 @@
       <h2>Trade Analyzer (Digits 1-10)</h2>
       <div class="analyzer-container">
         <div class="analyzer-header">
-          <p>Analyze the last digit behavior and percentage changes:</p>
+          <p>Weighted digit prediction. The cursor moves every second toward the digit with the highest probability.</p>
         </div>
-        <div class="digits-grid">
-          <div class="digit-card" data-digit="1">
-            <div class="digit-label">Digit 1</div>
-            <div class="digit-value">4</div>
-            <div class="digit-percentage">+3.2%</div>
-            <div class="digit-frequency">Frequency: 12%</div>
+
+        <div class="digit-cursor-panel">
+          <div class="cursor-label">
+            <span>Active digit:</span>
+            <strong id="active-digit">5</strong>
+            <span id="active-percent">10.0%</span>
           </div>
-          <div class="digit-card" data-digit="2">
-            <div class="digit-label">Digit 2</div>
-            <div class="digit-value">7</div>
-            <div class="digit-percentage">-1.5%</div>
-            <div class="digit-frequency">Frequency: 11%</div>
+          <div class="digit-circle-row" id="digit-circle-row">
+            <div class="digit-circle" data-digit="1" data-percent="11.7">
+              <span>1</span>
+              <small>11.7%</small>
+            </div>
+            <div class="digit-circle" data-digit="2" data-percent="10.2">
+              <span>2</span>
+              <small>10.2%</small>
+            </div>
+            <div class="digit-circle" data-digit="3" data-percent="10.4">
+              <span>3</span>
+              <small>10.4%</small>
+            </div>
+            <div class="digit-circle" data-digit="4" data-percent="11.3">
+              <span>4</span>
+              <small>11.3%</small>
+            </div>
+            <div class="digit-circle" data-digit="5" data-percent="10.4">
+              <span>5</span>
+              <small>10.4%</small>
+            </div>
+            <div class="digit-circle" data-digit="6" data-percent="7.4">
+              <span>6</span>
+              <small>7.4%</small>
+            </div>
+            <div class="digit-circle" data-digit="7" data-percent="8.6">
+              <span>7</span>
+              <small>8.6%</small>
+            </div>
+            <div class="digit-circle" data-digit="8" data-percent="10.0">
+              <span>8</span>
+              <small>10.0%</small>
+            </div>
+            <div class="digit-circle" data-digit="9" data-percent="10.6">
+              <span>9</span>
+              <small>10.6%</small>
+            </div>
+            <div class="digit-circle" data-digit="10" data-percent="9.4">
+              <span>10</span>
+              <small>9.4%</small>
+            </div>
           </div>
-          <div class="digit-card" data-digit="3">
-            <div class="digit-label">Digit 3</div>
-            <div class="digit-value">9</div>
-            <div class="digit-percentage">+5.8%</div>
-            <div class="digit-frequency">Frequency: 13%</div>
-          </div>
-          <div class="digit-card" data-digit="4">
-            <div class="digit-label">Digit 4</div>
-            <div class="digit-value">2</div>
-            <div class="digit-percentage">-0.3%</div>
-            <div class="digit-frequency">Frequency: 9%</div>
-          </div>
-          <div class="digit-card" data-digit="5">
-            <div class="digit-label">Digit 5</div>
-            <div class="digit-value">5</div>
-            <div class="digit-percentage">+2.1%</div>
-            <div class="digit-frequency">Frequency: 10%</div>
-          </div>
-          <div class="digit-card" data-digit="6">
-            <div class="digit-label">Digit 6</div>
-            <div class="digit-value">8</div>
-            <div class="digit-percentage">+4.2%</div>
-            <div class="digit-frequency">Frequency: 12%</div>
-          </div>
-          <div class="digit-card" data-digit="7">
-            <div class="digit-label">Digit 7</div>
-            <div class="digit-value">3</div>
-            <div class="digit-percentage">-2.7%</div>
-            <div class="digit-frequency">Frequency: 11%</div>
-          </div>
-          <div class="digit-card" data-digit="8">
-            <div class="digit-label">Digit 8</div>
-            <div class="digit-value">6</div>
-            <div class="digit-percentage">+1.9%</div>
-            <div class="digit-frequency">Frequency: 10%</div>
-          </div>
-          <div class="digit-card" data-digit="9">
-            <div class="digit-label">Digit 9</div>
-            <div class="digit-value">1</div>
-            <div class="digit-percentage">-3.4%</div>
-            <div class="digit-frequency">Frequency: 8%</div>
-          </div>
-          <div class="digit-card" data-digit="10">
-            <div class="digit-label">Digit 10</div>
-            <div class="digit-value">0</div>
-            <div class="digit-percentage">+0.5%</div>
-            <div class="digit-frequency">Frequency: 3%</div>
-          </div>
+          <div class="digit-cursor" id="digit-cursor"></div>
         </div>
       </div>
     </section>

@@ -38,7 +38,7 @@
         </div>
 
         <div class="form-step" data-step="2">
-          <h2>Identity documents</h2>
+          <h2>Verification documents</h2>
           <label>Country of residence<select name="country" required>
             <option value="">Select country</option>
             <option>United States</option>
@@ -55,6 +55,9 @@
           </select></label>
           <label>Document number<input type="text" name="docNumber" placeholder="123456789" required /></label>
           <label>Upload document image<input type="file" name="docUpload" accept="image/*,.pdf" required /></label>
+          <label>Street address<input type="text" name="address" placeholder="123 Main Street" required /></label>
+          <label>Current location<input type="text" name="location" placeholder="City, State / Region" required /></label>
+          <label>Face recognition selfie<input type="file" name="faceUpload" accept="image/*" required /></label>
           <div class="form-actions">
             <button class="button button-secondary" type="button" id="prevStep">Back</button>
             <button class="button button-primary" type="submit">Submit verification</button>
