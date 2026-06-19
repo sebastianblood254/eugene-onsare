@@ -24,29 +24,198 @@
       <p>VISION.COM is a trading hub built to present options and derivatives services clearly, with an emphasis on risk disclosure, broker integration, and legal readiness.</p>
     </section>
 
-    <section class="trade-overview">
-      <div class="grid-3">
-        <article>
-          <h3>Derivatives trading</h3>
-          <p>Offer options, CFDs, and spread instruments through a regulated trading partner. The site provides an educational entry point before users access the broker platform.</p>
-        </article>
-        <article>
-          <h3>Broker integration</h3>
-          <p>Use partner APIs such as Deriv.com to execute orders, display account balances, and manage user sessions. This template is the front-end companion to that backend integration.</p>
-        </article>
-        <article>
-          <h3>Risk management</h3>
-          <p>Clearly disclose market risk, leveraged exposure, and suitability requirements. Encourage users to complete KYC before trading.</p>
-        </article>
+    <!-- Trading Mode Selector -->
+    <section class="trading-mode">
+      <div class="mode-selector">
+        <button class="mode-btn mode-active" data-mode="real">Real Account</button>
+        <button class="mode-btn" data-mode="demo">Demo Account</button>
+      </div>
+      <p class="mode-info">Current Mode: <strong id="current-mode">Real Trading</strong></p>
+    </section>
+
+    <!-- Trading View Section -->
+    <section class="trading-view">
+      <h2>Trading View</h2>
+      <div class="instruments-grid">
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Synthetic Indices</h3>
+            <span class="badge">Volatility: Medium</span>
+          </div>
+          <div class="ticker" data-ticker="SI">
+            <div class="ticker-name">Synthetic Index</div>
+            <div class="ticker-value">5,234.50</div>
+            <div class="ticker-change positive">+2.45%</div>
+          </div>
+          <div class="instrument-details">
+            <p>AI-generated volatile indices with 24/7 trading available.</p>
+            <button class="button button-primary trade-btn" data-instrument="SI">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>CFDs</h3>
+            <span class="badge">Leverage: Up to 50x</span>
+          </div>
+          <div class="ticker" data-ticker="CFD">
+            <div class="ticker-name">CFD Index</div>
+            <div class="ticker-value">3,821.75</div>
+            <div class="ticker-change positive">+1.82%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Contract for Differences on forex, stocks, and commodities.</p>
+            <button class="button button-primary trade-btn" data-instrument="CFD">Trade Now</button>
+          </div>
+        </div>
+
+        <div class="instrument-card">
+          <div class="instrument-header">
+            <h3>Step Index</h3>
+            <span class="badge">Volatility: High</span>
+          </div>
+          <div class="ticker" data-ticker="STEP">
+            <div class="ticker-name">Step Index</div>
+            <div class="ticker-value">2,156.25</div>
+            <div class="ticker-change negative">-0.95%</div>
+          </div>
+          <div class="instrument-details">
+            <p>Advanced index with step-wise volatility increases.</p>
+            <button class="button button-primary trade-btn" data-instrument="STEP">Trade Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manual Trading Section -->
+    <section class="manual-trading">
+      <h2>Manual Trading</h2>
+      <div class="trading-form">
+        <div class="form-group">
+          <label>Select Instrument</label>
+          <select id="instrument-select">
+            <option value="SI">Synthetic Index</option>
+            <option value="CFD">CFDs</option>
+            <option value="STEP">Step Index</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Entry Range (Digits)</label>
+            <div class="range-input">
+              <input type="number" id="range-min" placeholder="Min" min="0" max="10000" value="100">
+              <span>to</span>
+              <input type="number" id="range-max" placeholder="Max" min="0" max="10000" value="500">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Expected Percentage Change</label>
+            <div class="percentage-input">
+              <input type="number" id="percentage" placeholder="%" min="-100" max="100" step="0.01" value="2.5">
+              <span>%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Stake Amount</label>
+          <input type="number" id="stake" placeholder="Enter amount" min="1" value="10">
+        </div>
+
+        <div class="ticker-display">
+          <h4>Live Moving Ticker</h4>
+          <div class="moving-ticker" id="moving-ticker">
+            <span class="ticker-item">SI: 5,234.50</span>
+            <span class="ticker-item">CFD: 3,821.75</span>
+            <span class="ticker-item">STEP: 2,156.25</span>
+          </div>
+        </div>
+
+        <button class="button button-primary" id="trade-submit">Execute Trade</button>
+      </div>
+    </section>
+
+    <!-- Trade Analyzer Section -->
+    <section class="trade-analyzer">
+      <h2>Trade Analyzer (Digits 1-10)</h2>
+      <div class="analyzer-container">
+        <div class="analyzer-header">
+          <p>Analyze the last digit behavior and percentage changes:</p>
+        </div>
+        <div class="digits-grid">
+          <div class="digit-card" data-digit="1">
+            <div class="digit-label">Digit 1</div>
+            <div class="digit-value">4</div>
+            <div class="digit-percentage">+3.2%</div>
+            <div class="digit-frequency">Frequency: 12%</div>
+          </div>
+          <div class="digit-card" data-digit="2">
+            <div class="digit-label">Digit 2</div>
+            <div class="digit-value">7</div>
+            <div class="digit-percentage">-1.5%</div>
+            <div class="digit-frequency">Frequency: 11%</div>
+          </div>
+          <div class="digit-card" data-digit="3">
+            <div class="digit-label">Digit 3</div>
+            <div class="digit-value">9</div>
+            <div class="digit-percentage">+5.8%</div>
+            <div class="digit-frequency">Frequency: 13%</div>
+          </div>
+          <div class="digit-card" data-digit="4">
+            <div class="digit-label">Digit 4</div>
+            <div class="digit-value">2</div>
+            <div class="digit-percentage">-0.3%</div>
+            <div class="digit-frequency">Frequency: 9%</div>
+          </div>
+          <div class="digit-card" data-digit="5">
+            <div class="digit-label">Digit 5</div>
+            <div class="digit-value">5</div>
+            <div class="digit-percentage">+2.1%</div>
+            <div class="digit-frequency">Frequency: 10%</div>
+          </div>
+          <div class="digit-card" data-digit="6">
+            <div class="digit-label">Digit 6</div>
+            <div class="digit-value">8</div>
+            <div class="digit-percentage">+4.2%</div>
+            <div class="digit-frequency">Frequency: 12%</div>
+          </div>
+          <div class="digit-card" data-digit="7">
+            <div class="digit-label">Digit 7</div>
+            <div class="digit-value">3</div>
+            <div class="digit-percentage">-2.7%</div>
+            <div class="digit-frequency">Frequency: 11%</div>
+          </div>
+          <div class="digit-card" data-digit="8">
+            <div class="digit-label">Digit 8</div>
+            <div class="digit-value">6</div>
+            <div class="digit-percentage">+1.9%</div>
+            <div class="digit-frequency">Frequency: 10%</div>
+          </div>
+          <div class="digit-card" data-digit="9">
+            <div class="digit-label">Digit 9</div>
+            <div class="digit-value">1</div>
+            <div class="digit-percentage">-3.4%</div>
+            <div class="digit-frequency">Frequency: 8%</div>
+          </div>
+          <div class="digit-card" data-digit="10">
+            <div class="digit-label">Digit 10</div>
+            <div class="digit-value">0</div>
+            <div class="digit-percentage">+0.5%</div>
+            <div class="digit-frequency">Frequency: 3%</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="details">
       <h2>How this site works</h2>
       <ul>
-        <li>Landing page with product positioning and trading overview.</li>
-        <li>KYC onboarding page for identity verification.</li>
-        <li>Clear endpoint marketing for the domain <strong>vision.com</strong>.</li>
+        <li>Choose between Real and Demo trading accounts.</li>
+        <li>View live tickers for Synthetic Indices, CFDs, and Step Index.</li>
+        <li>Execute manual trades with custom entry ranges and percentages.</li>
+        <li>Analyze digit patterns and frequencies for informed trading decisions.</li>
       </ul>
     </section>
 
@@ -62,5 +231,7 @@
       <p>Vision trading site • Prototype landing page • Not financial advice.</p>
     </div>
   </footer>
+  <script src="assets/script.js"></script>
+  <script src="assets/trading.js"></script>
 </body>
 </html>
