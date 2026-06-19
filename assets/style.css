@@ -515,6 +515,29 @@ body {
   background: #f0f5fb;
 }
 
+.cashier {
+  display: grid;
+  gap: 0.25rem;
+  text-align: right;
+}
+
+.cashier .balance,
+.cashier .currency {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.cashier-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cashier-actions .button {
+  min-width: 100px;
+  padding: 0.65rem 1rem;
+}
+
 .cta-buttons {
   display: flex;
   align-items: center;
@@ -735,6 +758,203 @@ body {
   margin-top: 1rem;
 }
 
+.trade-chart-panel {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid #e5e9f0;
+  margin-bottom: 1.5rem;
+}
+
+.chart-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chart-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+}
+
+.chart-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.chart-actions label {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.chart-actions select {
+  min-width: 120px;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #d9e2ef;
+  background: white;
+  color: #0f172a;
+}
+
+.chart-wrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.chart-placeholder {
+  position: relative;
+  min-height: 420px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+  border: 1px solid #d9e2ef;
+  overflow: hidden;
+}
+
+.chart-grid-line {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(15,23,42,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.08) 1px, transparent 1px);
+  background-size: calc(100% / 12) calc(100% / 10);
+  pointer-events: none;
+}
+
+.chart-series {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  padding: 1rem 0.75rem 1.8rem;
+  pointer-events: none;
+}
+
+.chart-candle {
+  position: relative;
+  width: calc((100% / 32) - 0.35rem);
+  min-width: 8px;
+  flex: 1 1 auto;
+}
+
+.candle-wick {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  background: rgba(15, 23, 42, 0.6);
+  transform: translateX(-50%);
+  border-radius: 99px;
+}
+
+.candle-body {
+  position: absolute;
+  left: 50%;
+  width: 10px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.chart-indicator-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.chart-indicator-layer svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.chart-bottom-axis {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: rgba(71, 85, 105, 0.8);
+  pointer-events: none;
+}
+
+.chart-overlay {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.82);
+  border-radius: 14px;
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.indicator-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.indicator-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.75rem;
+}
+
+.indicator-pill {
+  border: 1px solid #d9e2ef;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.indicator-pill:hover {
+  transform: translateY(-1px);
+  border-color: #2563eb;
+}
+
+.indicator-pill.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.indicator-summary {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .chart-meta,
+  .chart-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .instrument-card {
   display: grid;
   gap: 1rem;
@@ -888,6 +1108,48 @@ body {
 .analyzer-container {
   display: grid;
   gap: 1rem;
+}
+
+.bot-trading {
+  background: #ffffff;
+  border: 1px solid #e5e9f0;
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+
+.bot-signal-panel {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #d9e2ef;
+  border-radius: 14px;
+  padding: 1rem;
+  background: #f8fafc;
+}
+
+.signal-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #e5e9f0;
+}
+
+.bot-trade-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ecfdf5;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.bot-trade-message.bot-trade-success {
+  background: #ecfdf5;
+  color: #166534;
+  border-color: #bbf7d0;
 }
 
 .analyzer-header {

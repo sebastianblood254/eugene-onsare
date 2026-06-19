@@ -10,6 +10,18 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html">VISION.COM</a>
+      <div class="header-right">
+        <div class="cashier-panel">
+          <div class="cashier">
+            <span class="balance">Demo: <strong id="demo-balance">10,000.00 USD</strong></span>
+            <span class="currency">Real: <strong id="real-balance">0.00 USD</strong></span>
+          </div>
+          <div class="cashier-actions">
+            <button class="button button-secondary" id="depositBtn" type="button">Deposit</button>
+            <button class="button button-secondary" id="withdrawBtn" type="button">Withdraw</button>
+          </div>
+        </div>
+      </div>
       <nav class="site-nav">
         <a href="index.html" class="nav-item">Dashboard</a>
         <a href="trade.html" class="nav-item active">Trade</a>
@@ -39,6 +51,73 @@
     <!-- Trading View Section -->
     <section class="trading-view">
       <h2>Trading View</h2>
+      <div class="trade-chart-panel">
+        <div class="chart-meta">
+          <div>
+            <div class="chart-label">Chart</div>
+            <h3 id="chart-title">Volatility 25 Index • 24h</h3>
+          </div>
+
+          <div class="chart-actions">
+            <label>Market
+              <select id="chart-market-select">
+                <option value="VOL10">Volatility 10</option>
+                <option value="VOL25" selected>Volatility 25</option>
+                <option value="VOL50">Volatility 50</option>
+                <option value="VOL75">Volatility 75</option>
+                <option value="VOL100">Volatility 100</option>
+                <option value="VOL200">Volatility 200</option>
+                <option value="CFD">CFD Index</option>
+                <option value="STEP">Step Index</option>
+              </select>
+            </label>
+
+            <label>Timeframe
+              <select id="chart-timeframe-select">
+                <option value="1m">1m</option>
+                <option value="5m">5m</option>
+                <option value="15m">15m</option>
+                <option value="1h">1h</option>
+                <option value="4h">4h</option>
+                <option value="24h" selected>24h</option>
+                <option value="1w">1w</option>
+              </select>
+            </label>
+
+            <button class="button button-secondary" id="chart-reset" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="chart-wrapper">
+          <div class="chart-placeholder" id="chart-placeholder">
+            <div class="chart-grid-line"></div>
+            <div class="chart-series" id="chart-series"></div>
+            <div class="chart-indicator-layer" id="chart-indicator-layer"></div>
+            <div class="chart-overlay" id="chart-overlay">Volatility 25 • 24h • EMA, RSI</div>
+            <div class="chart-bottom-axis" id="chart-bottom-axis"></div>
+          </div>
+
+          <div class="indicator-panel">
+            <label>Indicators</label>
+            <div class="indicator-list">
+              <button type="button" class="indicator-pill active" data-indicator="EMA">EMA</button>
+              <button type="button" class="indicator-pill active" data-indicator="SMA">SMA</button>
+              <button type="button" class="indicator-pill active" data-indicator="RSI">RSI</button>
+              <button type="button" class="indicator-pill" data-indicator="MACD">MACD</button>
+              <button type="button" class="indicator-pill" data-indicator="Bollinger">Bollinger</button>
+              <button type="button" class="indicator-pill" data-indicator="Stochastic">Stochastic</button>
+              <button type="button" class="indicator-pill" data-indicator="ADX">ADX</button>
+              <button type="button" class="indicator-pill" data-indicator="Ichimoku">Ichimoku</button>
+              <button type="button" class="indicator-pill" data-indicator="Volume">Volume</button>
+              <button type="button" class="indicator-pill" data-indicator="ATR">ATR</button>
+              <button type="button" class="indicator-pill" data-indicator="OBV">OBV</button>
+              <button type="button" class="indicator-pill" data-indicator="Pivot">Pivot</button>
+            </div>
+            <div class="indicator-summary">Selected indicators: <span id="indicator-summary">EMA, SMA, RSI</span></div>
+          </div>
+        </div>
+      </div>
+
       <div class="instruments-grid">
         <div class="instrument-card">
           <div class="instrument-header">
@@ -228,6 +307,32 @@
 
         <button class="button button-primary" id="trade-submit">Execute Trade</button>
       </div>
+    </section>
+
+    <!-- Bot Trading Signal -->
+    <section class="bot-trading">
+      <h2>Bot trading signal</h2>
+      <p>Use the cursor's last tick to power a bot trade signal. The signal reads the last active cursor digit and percentage.</p>
+      <div class="bot-signal-panel">
+        <div class="signal-row">
+          <span>Last cursor tick</span>
+          <strong id="last-cursor-digit">5</strong>
+        </div>
+        <div class="signal-row">
+          <span>Signal strength</span>
+          <strong id="last-cursor-percent">10.0%</strong>
+        </div>
+        <div class="signal-row">
+          <span>Last signal time</span>
+          <strong id="last-cursor-time">--:--:--</strong>
+        </div>
+        <div class="signal-row">
+          <span>Selected instrument</span>
+          <strong id="bot-selected-instrument">VOL10</strong>
+        </div>
+      </div>
+      <button class="button button-primary" id="bot-trade-btn">Execute bot trade</button>
+      <div class="bot-trade-message" id="bot-trade-message" hidden></div>
     </section>
 
     <!-- Trade Analyzer Section -->
