@@ -516,7 +516,31 @@ function attachDigitClickHandlers() {
   });
 }
 
+function applyDigitColorCoding() {
+  const digits = getDigitInfos();
+  if (!digits.length) return;
+  
+  const percents = digits.map(d => d.percent).sort((a, b) => b - a);
+  const highestPercent = percents[0];
+  const highPercent = percents[Math.floor(percents.length / 3)] || 0;
+  const mediumPercent = percents[Math.floor(percents.length * 2 / 3)] || 0;
+  
+  digits.forEach(digit => {
+    digit.element.classList.remove('highest', 'high', 'medium', 'low');
+    if (digit.percent >= highestPercent - 0.5) {
+      digit.element.classList.add('highest');
+    } else if (digit.percent >= highPercent) {
+      digit.element.classList.add('high');
+    } else if (digit.percent >= mediumPercent) {
+      digit.element.classList.add('medium');
+    } else {
+      digit.element.classList.add('low');
+    }
+  });
+}
+
 attachDigitClickHandlers();
+applyDigitColorCoding();
 animateDigitCursor();
 setInterval(animateDigitCursor, 1000);
 updateBotSignalDisplay();

@@ -862,10 +862,10 @@ body {
 .candle-body {
   position: absolute;
   left: 50%;
-  width: 10px;
+  width: 12px;
   transform: translateX(-50%);
-  border-radius: 999px;
-  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06);
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chart-indicator-layer {
@@ -1191,7 +1191,7 @@ body {
 
 .digit-circle-row {
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
   gap: 0.5rem;
   margin-top: 1.75rem;
   position: relative;
@@ -1201,37 +1201,83 @@ body {
   display: grid;
   place-items: center;
   gap: 0.25rem;
-  min-height: 70px;
+  min-height: 65px;
   padding: 0.6rem 0.4rem;
-  border-radius: 14px;
+  border-radius: 50%;
   background: white;
-  border: 1px solid #d9e2ef;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 2px solid #d9e2ef;
+  transition: all 0.25s ease;
   cursor: pointer;
+  aspect-ratio: 1;
 }
 
 .digit-circle:hover {
-  transform: translateY(-4px);
-  border-color: #3b82f6;
+  transform: scale(1.08);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.1);
 }
 
 .digit-circle span {
   display: block;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
 }
 
 .digit-circle small {
   color: #64748b;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .digit-circle.active {
   background: #2563eb;
   color: white;
   border-color: #1d4ed8;
-  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.25);
+}
+
+/* Color coding by probability */
+.digit-circle.highest {
+  background: #10b981;
+  border-color: #059669;
+  color: white;
+}
+
+.digit-circle.highest span,
+.digit-circle.highest small {
+  color: white;
+}
+
+.digit-circle.high {
+  background: #3b82f6;
+  border-color: #2563eb;
+  color: white;
+}
+
+.digit-circle.high span,
+.digit-circle.high small {
+  color: white;
+}
+
+.digit-circle.medium {
+  background: #fbbf24;
+  border-color: #f59e0b;
+  color: #1f2937;
+}
+
+.digit-circle.medium span,
+.digit-circle.medium small {
+  color: #1f2937;
+}
+
+.digit-circle.low {
+  background: #ef4444;
+  border-color: #dc2626;
+  color: white;
+}
+
+.digit-circle.low span,
+.digit-circle.low small {
+  color: white;
 }
 
 .digit-cursor {
@@ -1267,8 +1313,7 @@ body {
 @media (max-width: 1024px) {
   .page-content,
   .trading-mode,
-  .trading-form,
-  .digit-circle-row {
+  .trading-form {
     grid-template-columns: 1fr;
   }
 
@@ -1277,7 +1322,47 @@ body {
   }
 
   .digit-circle-row {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .digit-circle-row {
+    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .digit-circle {
+    min-height: 48px;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .digit-circle span {
+    font-size: 0.9rem;
+  }
+
+  .digit-circle small {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .digit-circle-row {
+    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+    gap: 0.3rem;
+  }
+
+  .digit-circle {
+    min-height: 44px;
+    padding: 0.3rem 0.2rem;
+  }
+
+  .digit-circle span {
+    font-size: 0.85rem;
+  }
+
+  .digit-circle small {
+    font-size: 0.6rem;
   }
 }
 
