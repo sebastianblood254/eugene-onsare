@@ -4,10 +4,18 @@
   "description": "Vision.com trading site prototype with login, signup, KYC and broker API integration sample.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:prod": "pm2 start ecosystem.config.js --env production",
+    "start:dev": "pm2 start ecosystem.config.js --env development",
+    "stop": "pm2 stop vision-trading-site",
+    "restart": "pm2 restart vision-trading-site",
+    "logs": "pm2 logs vision-trading-site",
+    "status": "pm2 status",
+    "delete": "pm2 delete vision-trading-site"
   },
   "dependencies": {
-    "express": "^4.22.2"
+    "express": "^4.22.2",
+    "pm2": "^5.3.0"
   },
   "engines": {
     "node": ">=18"

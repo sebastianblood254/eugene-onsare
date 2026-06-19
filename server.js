@@ -56,6 +56,42 @@ app.use((req, res) => {
   res.status(404).send('Not found');
 });
 
-app.listen(port, () => {
-  console.log(`VISION.COM server running at http://localhost:${port}`);
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  return res.json({ status: 'healthy', uptime: process.uptime(), timestamp: new Date().toISOString() });
+});
+
+// Server initialization
+const server = app.listen(port, () => {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] VISION.COM server running at http://localhost:${port}`);
+  console.log(`[${timestamp}] Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`[${timestamp}] Process ID: ${process.pid}`);
+});
+
+// Graceful shutdown handling
+process.on('SIGTERM', () => {
+  console.log('[SIGTERM] Graceful shutdown initiated...');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('[SIGINT] Graceful shutdown initiated...');
+  server.close(() => {
+    console.log('Server closed');
+    process.exit(0);
+  });
+});
+
+// Error handling
+process.on('uncaughtException', (error) => {
+  console.error('[FATAL ERROR] Uncaught Exception:', error);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[FATAL ERROR] Unhandled Rejection at:', promise, 'Reason:', reason);
 });
