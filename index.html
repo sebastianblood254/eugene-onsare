@@ -8,83 +8,188 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">VISION.COM</a>
-      <nav class="site-nav">
-        <a href="trade.html">Trade</a>
-        <a href="kyc.html">KYC</a>
-        <a href="#endpoint">Endpoint</a>
-      </nav>
+    <div class="header-top">
+      <div class="header-brand">
+        <a class="brand" href="index.html">🎯 VISION.COM</a>
+        <span class="tagline">Powered by Deriv</span>
+      </div>
+      <div class="header-right">
+        <div class="cashier">
+          <span class="balance">Cashier</span>
+          <span class="currency">USD 14.86 USD</span>
+        </div>
+      </div>
     </div>
+    <nav class="site-nav">
+      <a href="index.html" class="nav-item active">Dashboard</a>
+      <a href="trade.html" class="nav-item">Bot Builder</a>
+      <a href="#" class="nav-item">Free Bots</a>
+      <a href="#" class="nav-item">Strategies</a>
+      <a href="#" class="nav-item">Analysis</a>
+      <a href="trade.html" class="nav-item">D-Trader</a>
+      <a href="#" class="nav-item">Smart Analysis</a>
+      <a href="#" class="nav-item">Signals</a>
+      <a href="#" class="nav-item">Matches</a>
+      <a href="#" class="nav-item">Speedbot</a>
+      <a href="#" class="nav-item">Charts</a>
+      <a href="#" class="nav-item">Copy Trading</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-copy">
-        <span class="eyebrow">VISION.COM</span>
-        <h1>Trade derivatives and options with a clear compliance-first platform.</h1>
-        <p>VISION.COM is a modern trading landing experience with a dedicated KYC flow, broker integration guidance, and a clear endpoint for your whole site.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="trade.html">Explore Trading</a>
-          <a class="button button-secondary" href="kyc.html">Start KYC</a>
+  <main class="dashboard-layout">
+    <div class="dashboard-main">
+      <section class="dashboard-section">
+        <h2>Create Your Trading Strategy</h2>
+        <p>Import a bot from your computer or Google Drive, build it from scratch, or start with a quick strategy.</p>
+        <div class="strategy-cards">
+          <a href="#" class="strategy-card">
+            <div class="card-icon">💻</div>
+            <div class="card-label">My Computer</div>
+          </a>
+          <a href="#" class="strategy-card">
+            <div class="card-icon">☁️</div>
+            <div class="card-label">Google Drive</div>
+          </a>
+          <a href="trade.html" class="strategy-card">
+            <div class="card-icon">🤖</div>
+            <div class="card-label">Bot Builder</div>
+          </a>
+          <a href="#" class="strategy-card">
+            <div class="card-icon">⚡</div>
+            <div class="card-label">Quick Strategy</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <h2>Your Bots</h2>
+        <div class="bots-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Bot Name</th>
+                <th>Last Modified</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LOCO SPEED BOT (1)</strong></td>
+                <td>17 Jun 2026</td>
+                <td><span class="status unsaved">Unsaved</span></td>
+                <td class="actions">
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>LOCO SPEED BOT (1)</strong></td>
+                <td>17 Jun 2026</td>
+                <td><span class="status unsaved">Unsaved</span></td>
+                <td class="actions">
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">🗑️</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>LOCO SPEED BOT (1)</strong></td>
+                <td>17 Jun 2026</td>
+                <td><span class="status unsaved">Unsaved</span></td>
+                <td class="actions">
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">📋</button>
+                  <button class="action-btn">🗑️</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="auth-section-dashboard">
+        <div class="auth-container-dashboard">
+          <div class="auth-part">
+            <h3>Get Started Today</h3>
+            <p>Create an account or sign in to manage your trading bots.</p>
+            <div class="auth-buttons">
+              <a href="signup.html" class="button button-primary">Create Account</a>
+              <a href="login.html" class="button button-secondary">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-section">
+        <h2>Trading Instruments</h2>
+        <div class="instruments-preview">
+          <article class="instrument-preview">
+            <h3>Synthetic Indices</h3>
+            <p>24/7 AI-generated volatile indices for constant trading opportunities.</p>
+            <span class="status-badge available">Available</span>
+          </article>
+          <article class="instrument-preview">
+            <h3>CFDs</h3>
+            <p>Contract for Differences with up to 50x leverage on forex, stocks, and commodities.</p>
+            <span class="status-badge available">Available</span>
+          </article>
+          <article class="instrument-preview">
+            <h3>Step Index</h3>
+            <p>Advanced index with step-wise volatility for experienced traders.</p>
+            <span class="status-badge available">Available</span>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab active">Summary</button>
+        <button class="sidebar-tab">Transactions</button>
+        <button class="sidebar-tab">Journal</button>
+      </div>
+
+      <div class="sidebar-content">
+        <div class="summary-card">
+          <div class="summary-label">Total Stake</div>
+          <div class="summary-value">0.00 USD</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Total Payout</div>
+          <div class="summary-value">0.00 USD</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">No. of Runs</div>
+          <div class="summary-value">0</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Contracts Lost</div>
+          <div class="summary-value">0</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Contracts Won</div>
+          <div class="summary-value">0</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Total Profit/Loss</div>
+          <div class="summary-value profit">0.00 USD</div>
         </div>
       </div>
-    </section>
 
-    <section class="auth-section container">
-      <div class="auth-container">
-        <div class="sign-in-part">
-          <h3>Sign In</h3>
-          <p>Already have an account? Access your trading dashboard.</p>
-          <a class="button button-primary" href="login.html">Sign In to Account</a>
-        </div>
-        <div class="divider"></div>
-        <div class="login-part">
-          <h3>New to VISION.COM?</h3>
-          <p>Create an account to start trading derivatives and options.</p>
-          <a class="button button-secondary" href="signup.html">Create New Account</a>
-        </div>
+      <button class="reset-btn">Reset</button>
+
+      <div class="sidebar-footer">
+        <p><small>Ready to trade? Click "Run" to start your bot.</small></p>
       </div>
-    </section>
-
-    <section class="features container">
-      <article>
-        <h2>Designed for smart traders</h2>
-        <p>Build clear product flows for derivatives, options and broker-backed trading through licensed partners such as Deriv.com. The site shows your trading offering, risk disclosure, and compliance path.</p>
-      </article>
-      <article>
-        <h2>Compliance-ready KYC</h2>
-        <p>Collect user identity details, document proofs and verification status in a clean, user-friendly KYC experience. The prototype shows a full form and success confirmation.</p>
-      </article>
-      <article>
-        <h2>Clear site endpoint</h2>
-        <p>The final endpoint for this site is presented as <strong>https://vision.com</strong>, with every page and CTA aligned to the single Vision brand.</p>
-      </article>
-    </section>
-
-    <section class="cta-section">
-      <div class="container cta-inner">
-        <div>
-          <h2>Launch your trading experience</h2>
-          <p>Use this website as a starter template for a broker integration, KYC onboarding, and user education hub.</p>
-        </div>
-        <a class="button button-primary" href="kyc.html">Begin Verification</a>
-      </div>
-    </section>
-
-    <section id="endpoint" class="endpoint container">
-      <h2>Site Endpoint</h2>
-      <p>Your website endpoint is:</p>
-      <div class="endpoint-card">https://vision.com</div>
-      <p class="note">Deploy this site to a public host and connect the domain <strong>vision.com</strong>. For actual trading, integrate with a partner API and add secure backend services.</p>
-    </section>
+    </aside>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>VISION.COM • Trade responsibly • KYC verification required before account activation.</p>
-      <p>Prototype site built for a Vision trading landing experience.</p>
-    </div>
+    <p>🎯 VISION.COM • Trade responsibly • KYC verification required before account activation.</p>
+    <p>Professional trading platform powered by Deriv</p>
   </footer>
   <script src="assets/script.js"></script>
 </body>
