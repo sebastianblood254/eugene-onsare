@@ -92,6 +92,10 @@ body {
 }
 
 .nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
   padding: 1rem 1.2rem;
   text-decoration: none;
   color: #6c757d;
