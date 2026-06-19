@@ -6,6 +6,96 @@ document.addEventListener('DOMContentLoaded', function () {
   const steps = Array.from(document.querySelectorAll('.form-step'));
   let activeStep = 0;
 
+  function isLoggedIn() {
+    return localStorage.getItem('visionLoggedIn') === 'true';
+  }
+
+  function ensureAccountBalances() {
+    if (localStorage.getItem('visionDemoBalance') === null) {
+      localStorage.setItem('visionDemoBalance', '10000.00');
+    }
+    if (localStorage.getItem('visionRealBalance') === null) {
+      localStorage.setItem('visionRealBalance', '0.00');
+    }
+  }
+
+  function getBalance(key) {
+    return parseFloat(localStorage.getItem(key) || '0');
+  }
+
+  function updateCashierDisplay() {
+    const cashierPanel = document.querySelector('.cashier-panel');
+    if (!cashierPanel) return;
+
+    if (!isLoggedIn()) {
+      cashierPanel.style.display = 'none';
+      return;
+    }
+
+    cashierPanel.style.display = 'grid';
+    const demoBalance = document.getElementById('demo-balance');
+    const realBalance = document.getElementById('real-balance');
+    if (demoBalance) {
+      demoBalance.textContent = `${getBalance('visionDemoBalance').toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD`;
+    }
+    if (realBalance) {
+      realBalance.textContent = `${getBalance('visionRealBalance').toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD`;
+    }
+  }
+
+  function updateBalance(key, amount) {
+    const current = getBalance(key);
+    localStorage.setItem(key, amount.toFixed(2));
+    updateCashierDisplay();
+    return current;
+  }
+
+  function promptAccountAmount(action) {
+    if (!isLoggedIn()) {
+      alert('Please log in to use deposit and withdrawal features.');
+      return;
+    }
+
+    const account = prompt('Choose account type (demo or real):', 'demo');
+    if (!account) return;
+    const normalized = account.trim().toLowerCase();
+    const key = normalized === 'real' ? 'visionRealBalance' : 'visionDemoBalance';
+    const current = getBalance(key);
+
+    const amountText = prompt(`${action} amount for ${normalized} account:`, '100');
+    if (!amountText) return;
+    const amount = parseFloat(amountText);
+    if (Number.isNaN(amount) || amount <= 0) {
+      alert('Enter a valid numeric amount.');
+      return;
+    }
+
+    if (action === 'Withdraw' && amount > current) {
+      alert('Insufficient funds for withdrawal.');
+      return;
+    }
+
+    const newBalance = action === 'Deposit' ? current + amount : current - amount;
+    localStorage.setItem(key, newBalance.toFixed(2));
+    updateCashierDisplay();
+    alert(`${action} successful. New ${normalized} balance: ${newBalance.toFixed(2)} USD`);
+  }
+
+  function bindCashierActions() {
+    const depositBtn = document.getElementById('depositBtn');
+    const withdrawBtn = document.getElementById('withdrawBtn');
+    if (depositBtn) {
+      depositBtn.addEventListener('click', () => promptAccountAmount('Deposit'));
+    }
+    if (withdrawBtn) {
+      withdrawBtn.addEventListener('click', () => promptAccountAmount('Withdraw'));
+    }
+  }
+
+  ensureAccountBalances();
+  updateCashierDisplay();
+  bindCashierActions();
+
   function showStep(index) {
     steps.forEach((step, idx) => {
       step.classList.toggle('form-step-active', idx === index);
