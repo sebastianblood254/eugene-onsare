@@ -13,6 +13,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background: #f5f7fa;
+  overflow-x: hidden;
 }
 
 /* Header Styles */
@@ -88,7 +89,7 @@ body {
   margin: 0;
   background: #ffffff;
   border-bottom: 1px solid #e5e9f0;
-  overflow-x: auto;
+  overflow: hidden;
 }
 
 .nav-item {
@@ -148,7 +149,7 @@ body {
   margin: 0;
   background: #ffffff;
   border-bottom: 1px solid #e5e9f0;
-  overflow-x: auto;
+  overflow: hidden;
 }
 
 .strategy-cards {
@@ -225,13 +226,14 @@ body {
 
 /* Bots Table */
 .bots-table {
-  overflow-x: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .bots-table table {
   width: 100%;
-  min-width: 650px;
   border-collapse: collapse;
+  font-size: 0.9rem;
 }
 
 .bots-table th,
@@ -245,19 +247,20 @@ body {
 }
 
 .bots-table th {
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: left;
   font-weight: 600;
   color: #6c757d;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .bots-table td {
-  padding: 1rem;
+  padding: 0.8rem;
   border-bottom: 1px solid #e5e9f0;
   color: #1a1a2e;
+  font-size: 0.9rem;
 }
 
 .bots-table tbody tr:hover {
